@@ -1,5 +1,6 @@
 package com.digimaster.entities;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,7 +13,8 @@ import java.util.List;
 // and
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({"firstname", "lastname"})
+//@JsonIgnoreProperties({"firstname", "lastname"})
+@JsonFilter(value = "userFilter")
 public class User {
 
     @Id
@@ -37,7 +39,7 @@ public class User {
     private String role;
 
     @Column(name = "SSN", length = 50, nullable = false, unique = true)
-    @JsonIgnore
+//    @JsonIgnore
     private String ssn;
 
     @OneToMany(mappedBy="user")

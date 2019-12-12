@@ -21,12 +21,12 @@ import java.util.Optional;
 
 @RestController
 @Validated
-public class UserController {
+public class TransactionController {
 
     final private UserService userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public TransactionController(UserService userService) {
         this.userService = userService;
     }
 

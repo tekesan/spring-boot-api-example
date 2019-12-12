@@ -39,7 +39,8 @@ public class User {
     }
 
     // Fields Constructor
-    public User(Long id, String username, String firstname, String lastname, String email, String role, String ssn) {
+    public User(Long id, String username, String firstname, String lastname, String email,
+                String role, String ssn) {
         this.id = id;
         this.username = username;
         this.firstname = firstname;

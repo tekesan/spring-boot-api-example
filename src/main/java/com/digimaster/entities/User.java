@@ -45,12 +45,15 @@ public class User {
     @OneToMany(mappedBy="user")
     private List<Order> orders;
 
+    @Column(name = "ADDRESS")
+    private String address;
+
     // No Argument Constructor
     public User() {
     }
 
     // Fields Constructor
-    public User(Long id, String username, String firstname, String lastname, String email, String role, String ssn) {
+    public User(Long id, String username, String firstname, String lastname, String email, String role, String ssn, String address) {
         this.id = id;
         this.username = username;
         this.firstname = firstname;
@@ -58,6 +61,7 @@ public class User {
         this.email = email;
         this.role = role;
         this.ssn = ssn;
+        this.address = address;
     }
 
     // Getters and Setters
@@ -125,11 +129,27 @@ public class User {
         this.orders = orders;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     // To String
     @Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-                + ", email=" + email + ", role=" + role + ", ssn=" + ssn + "]";
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", orders=" + orders +
+                ", address='" + address + '\'' +
+                '}';
     }
-
 }

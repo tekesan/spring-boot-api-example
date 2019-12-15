@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name = "user")
 //@JsonIgnoreProperties({"firstname", "lastname"})
-@JsonFilter(value = "userFilter")
+//@JsonFilter(value = "userFilter")
 public class User {
 
     @ApiModelProperty(notes = " Auto generated unique id", required = true, position = 1)

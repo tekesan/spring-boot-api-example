@@ -50,6 +50,9 @@ public class User {
 //    @JsonIgnore
     private String ssn;
 
+    @Column(name = "PASSWORD", length = 100, nullable = false)
+    private String password;
+
     @OneToMany(
             cascade = CascadeType.ALL,
             mappedBy="user")
@@ -63,7 +66,7 @@ public class User {
     }
 
     // Fields Constructor
-    public User(String username, String firstname, String lastname, String email, String role, String ssn, String address, List<Order> orders) {
+    public User(String username, String firstname, String lastname, String email, String role, String ssn, String address, List<Order> orders, String password) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -72,6 +75,7 @@ public class User {
         this.ssn = ssn;
         this.address = address;
         this.orders = orders;
+        this.password = password;
     }
 
     // Getters and Setters
@@ -147,19 +151,27 @@ public class User {
         this.address = address;
     }
 
-    // To String
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                ", ssn='" + ssn + '\'' +
-                ", orders=" + orders +
-                ", address='" + address + '\'' +
-                '}';
+    public String getPassword() {
+        return password;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    // To String
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                ", firstname='" + firstname + '\'' +
+//                ", lastname='" + lastname + '\'' +
+//                ", email='" + email + '\'' +
+//                ", role='" + role + '\'' +
+//                ", ssn='" + ssn + '\'' +
+//                ", orders=" + orders +
+//                ", address='" + address + '\'' +
+//                '}';
+//    }
 }

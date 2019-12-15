@@ -9,17 +9,21 @@ import javax.persistence.*;
 public class Order {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long orderid;
 	private String orderdescription;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(
+			fetch = FetchType.LAZY)
 	@JsonIgnore
 	private User user;
 
 	public Order() {
-		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	public Order(String desc, User user) {
+		this.orderdescription = desc;
+		this.user = user;
 	}
 
 	public Long getOrderid() {

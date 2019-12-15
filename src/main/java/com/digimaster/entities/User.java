@@ -24,7 +24,7 @@ public class User {
 
     @ApiModelProperty(notes = " Auto generated unique id", required = true, position = 1)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @ApiModelProperty(notes = "username should be in format flname", example = "kreddy", required = false, position = 2)
@@ -50,7 +50,9 @@ public class User {
 //    @JsonIgnore
     private String ssn;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            mappedBy="user")
     private List<Order> orders;
 
     @Column(name = "ADDRESS")
@@ -61,8 +63,7 @@ public class User {
     }
 
     // Fields Constructor
-    public User(Long id, String username, String firstname, String lastname, String email, String role, String ssn, String address) {
-        this.id = id;
+    public User(String username, String firstname, String lastname, String email, String role, String ssn, String address, List<Order> orders) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -70,6 +71,7 @@ public class User {
         this.role = role;
         this.ssn = ssn;
         this.address = address;
+        this.orders = orders;
     }
 
     // Getters and Setters
